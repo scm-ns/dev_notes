@@ -1,0 +1,4 @@
+Use $(SRCROOT) to get the dir where .xcodeproj file in specified. 
+- helpful in specifying the paths we want to search for frameworks and headers
+
+
