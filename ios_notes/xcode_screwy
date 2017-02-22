@@ -1,0 +1,4 @@
+try removing the derived data. 
+rm -rf ~/Library/Developer/Xcode/DerivedData/projectname
+
+
