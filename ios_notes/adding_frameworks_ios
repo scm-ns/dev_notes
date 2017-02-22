@@ -1,0 +1,8 @@
+In gcc-toolchain the preprocessor uses the headers locations specified by the -I tag to create the final file which will be used for compilation
+In xcode there is a framework serach path that must be used if the frameworks is not included within the project, like copied or something. 
+Also note that if you copy the framework into the project, then the preprocess will run okay, but if you are linking aganist a frameowkr in a different dir, 
+then use the framework search path if you want the preprocessor to run properly. 
+
+Also we aware of includeing within targets !
+
+

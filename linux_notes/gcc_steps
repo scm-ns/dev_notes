@@ -1,0 +1,51 @@
+There are 4 steps in the compilation in gcc. 
+
+1) Preprocessor. 
+	creates a *.i file containing all the external dependencies like libraries added and our code. 
+			> eg : In an opencv compilation, the .i filed has about 65,000 loc and my lines were just 20 at the end of the file
+
+	The way the compiler finds these library headers is by searching in common locations like /usr/include
+	and any paths that we specify using the -I flag. 
+
+	cpp filenami.cpp > filename.i
+			> Yep the preprocessor is called cpp
+			> it does not have to end in *.i
+
+2) Compilation
+	The compiler uses the output of cpp  to create assembly files *.s 
+		
+	At the stage the linking to the libraries has not been done. 
+	gcc use the forward declared functions in the library to make sure that all the call are 
+	correct from our portion of the code and gcc creates external dependecies to the libraries that
+	will be used in the linking state
+
+	gcc filename.i -S filename.s
+
+
+3) assembler	
+	Comnverts the assembly files to object files. (machine code)
+	gcc -c filename.s -o filename.o
+
+
+4) linking
+	Linking is done by ld. Part of gcc
+	This is a slightly complex topic 
+	We not only have to specify the serach path, but also the library that we need to add. When we serch for headers, the library name is mentioned in our code and this helps figure out the library name
+	We can specify the serach path for linking librariies using -L and we specify the library name using -l
+	In linux the lib names are usually of the form 	libpthread.a or libpthread.so  , based on whether is is a static of dynamic library respecitvely. 
+	So when we specify the library name use just -lpthead. ld will add lib to the front and so/a at the end to find the library in the specified search path
+	
+	Keep in mind There are issues like library versions and also run time linking when we are using dynamic libraries 
+
+
+After all these steps we get the executable that we can use in any way possible
+
+
+
+NOTE : GCC VERSIONING ISSUE. 
+	most of the libraries in ubuntu 16 seem to be compiled using gcc5 so when using gcc4.9 even if everything is done properly, we will still get errors telling us that the linker failed to find the function
+	So check the compiler versions too ! I wasted hours with this issue for both opencv and lib serail that I needed to use. 
+
+There is make with its cute shortcuts, learn it ! 
+
+
