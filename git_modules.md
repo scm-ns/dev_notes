@@ -9,4 +9,24 @@ It is a cute system and there are alternatives like git sub-trees, but I haven't
 
 
 
+use this website for more information : https://chrisjean.com/git-submodules-adding-using-removing-and-updating/
+
+
+git submodules add git_repo lib/repo_name
+
+now a .gitmodules file will be created pointing to the repo that your added. 
+Along with it, as folder will be created lib/repo_name but it might be empty. ( based on the git versions, it could have the entire porject "
+
+If empty use : 
+	git submodules init
+	git submodules update
+
+Updating submodules : 
+	Navigate to the sub module that you added and make the necessary changes. 
+	Now navigate back to the curr repo, there when you run git status
+	lib/repo_name will show up with (new commits)
+	now you add lib/repo_name and create a commit, the pointer when keeps track of the repo version will be updated and now your curr repo 
+	will use the latest version of the lib repo . 
+
+
 
