@@ -9,21 +9,29 @@ It is a cute system and there are alternatives like git sub-trees, but I haven't
 
 use this website for more information : https://chrisjean.com/git-submodules-adding-using-removing-and-updating/
 
-git submodules add git_repo lib/repo_name
+git submodule add git_repo lib/repo_name
 
 now a .gitmodules file will be created pointing to the repo that your added. 
 Along with it, as folder will be created lib/repo_name but it might be empty. ( based on the git versions, it could have the entire porject "
 
 If empty use : 
-	git submodules init
-	git submodules update
+	git submodule init
+	git submodule update
+
+When you clone a project, the submodules are not automatically added to the project. To add them either follow the steps above or do this : 
+    git submodule update --init --recursive
 
 Updating submodules : 
 	Navigate to the sub module that you added and make the necessary changes. 
+    
+    Say you want the latest version of the sub module or a specific version of the lib, 
+    use git pull origin master or something similar to get the new version
+
 	Now navigate back to the curr repo, there when you run git status
 	lib/repo_name will show up with (new commits)
-	now you add lib/repo_name and create a commit, the pointer then keeps track of the repo version will be updated and now your curr repo 
-	will use the latest version of the lib repo . 
+	now you add lib/repo_name and create a commit, 
+    The pointer then keeps track of the verion ( of the submodule lib) will be updated and now your curr repo 
+	will use the new version of the submodule repo. 
 
 Internal storage.
     The commit that the library points to is stored in .git     
@@ -42,7 +50,6 @@ How to fix a particular version / tag /commit
             
         The subproject commit seems to be stored in lib/dlib file. 
         This is odd as it shows up as directory when in the terminal, but for git that seems to be a file ??? 
-
 
 rm a submodule adding by init
     git rm submodule_path
