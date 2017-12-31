@@ -1,0 +1,23 @@
+Cocopods seems to keep all the different packages in a single master repo and this causes
+extremely slow speeds when trying to download the master repo.
+
+The master repo has to be downloaded the first time you start using cocoapods and it is SLOW 
+
+A tip to speed up the install. 
+Rather than making cocoapods terminal tool download the repo on its own, 
+download the repo manually. 
+
+This is because when we download a repo manually, we can choose to use ssh instead of https 
+and this ends up being faster. I am not sure why. 
+
+[ Github maintains something like 5 servers for serving the cocoapods lib, may be when we use ssh, 
+we hit servers which are under a lower load may be ? ]
+
+Anyways it can be done like this 
+:
+
+pod repo remove master
+git clone git@github.com:CocoaPods/Specs.git ~/.cocoapods/repos/master
+pod setup
+
+
