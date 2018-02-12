@@ -6,9 +6,22 @@ How to sep break points :
     
     c 
         continues the program after the breaking point
+        till it hits the next break point
 
-    d
+    p / d
         Displays the variable
+    
+    s 
+        Goes to the next line of code. And stops execution there. 
+
+    n   
+        Goes to the next function and stops execution there. 
+        So it is simialr to s, but rather than stopping at the next 
+        line of code. It stops at the next function call, at the same 
+        stack level. 
+  
+How to setup a project to use gdb. 
+    Use -g flag while building the project
 
 How to list the source code : 
     l file_name.cpp:line_number
@@ -16,6 +29,16 @@ How to list the source code :
 Bug Finding general Tips : 
     Finding your bug is a process of conforming many things that you believe are true, but you find one which is not true
 
+GDB allows us to manage multiple threads. 
+    It can be seen using 
+    info threads 
     
+    # This will allow the context to be switched into a particular thread. 
+    thread #thread-number 
+    
+    thread apply all #command
+
+GDB can't seem to run just a sinlge thread. When you run it, it runs all the different threads
+    together. 
 
 
