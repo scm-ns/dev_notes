@@ -1,0 +1,21 @@
+How to sep break points : 
+    b test.cpp:156
+        where test.cpp is the file name and 156 is the line number
+    b class_name::function_name
+        break at a specific function in a specific class
+    
+    c 
+        continues the program after the breaking point
+
+    d
+        Displays the variable
+
+How to list the source code : 
+    l file_name.cpp:line_number
+
+Bug Finding general Tips : 
+    Finding your bug is a process of conforming many things that you believe are true, but you find one which is not true
+
+    
+
+
