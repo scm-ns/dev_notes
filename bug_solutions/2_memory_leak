@@ -1,0 +1,14 @@
+I had a memory leak arise from, the data that I put into a queue, not 
+being read fast enough by the threads that where suppoed to read from the
+queue. 
+
+This leads to backlogging of data within the queue, leading to a memory explosion. 
+
+This was an intersting bug. I though this bug was caused by memory being leaked. 
+The memory was not being leaked. It simply was not being processed fast enough. 
+
+Since I was capturing the data in the queue, the data was being kept alive, as there
+where reference to the data which where kept alive, as the tasks that I pushed on
+to the queue, maintied references to them. 
+
+

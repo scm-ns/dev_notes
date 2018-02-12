@@ -1,0 +1,17 @@
+
+Opencv cv::mat uses automatic referencing counting behind the headers to maintain the images. 
+So the copying of the cv:;mat header is not that expensive. 
+
+So copying the header is a much better appraoch when sharing data between different threads.
+The data will be automatically maintained. 
+
+use a const reference to a cv::mat, is not really a good solution, as the cv;;mat could end up
+being destruted by the time you get to using that cv::mat in a different thread. 
+
+So better to use copies. 
+
+This is one reason to use shared_pointers which uses automatic reference counting to manage data on the
+heap. The simple fact that others have access to the shared ptr, ensure that the data is still kept in
+memory. 
+
+
